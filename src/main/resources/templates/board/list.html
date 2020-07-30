@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+
 <body>
-<!-- header 추가 -->
-<div th:insert="common/header.html" id="header"></div>
 
-<div id="wrap">
-    <a th:href="@{/post}">글쓰기</a>
+<h1>게시판 목록</h1>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+    <a role="button" class="btn btn-primary" th:href="@{/write}">글쓰기</a>
 
-    <form action="/board/search" method="GET">
+    <form action="/board/search" method="GET" class="form-group">
         <div class="search">
-            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+            <input  name="keyword" type="text" placeholder="검색어를 입력해주세요">
         </div>
 
-        <button>검색하기</button>
-    </form>
 
-    <table>
+        <button class="btn btn-default">검색하기</button>
+    </form>
+        </div>
+    </div>
+
+    </div>
+    <table class="table">
         <thead>
         <tr>
             <th class="one wide">번호</th>
@@ -59,7 +65,10 @@
     </div>
 </div>
 
-<!-- footer 추가 -->
-<div th:insert="common/footer.html" id="footer"></div>
 </body>
+
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/board.js"></script>
+</footer>
 </html>

@@ -11,8 +11,8 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass //테이블로 매핑하지 않고, 자식 Entity에게 매핑정보를 상속하기 위한 어노테이션
-@EntityListeners(AuditingEntityListener.class) //JPA에게 해당 Entity는 Auditing기능을 사용한다는 것을 알리는 어노테이션
+@MappedSuperclass //Entity 클래스들이 상속받을경우 필드들(createdDate,modifiedDate)을 자동으로 칼럼으로 인식
+@EntityListeners(AuditingEntityListener.class) //해당 클래스에 Auditing기능을 사용한다는 것을 알리는 어노테이션
 public class TimeEntity {
 
     @CreatedDate //데이터 생성 시간

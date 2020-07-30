@@ -3,16 +3,19 @@ package com.sungho.board.service;
 import com.sungho.board.domain.board.Board;
 import com.sungho.board.domain.board.BoardRepository;
 import com.sungho.board.dto.BoardDto;
+import com.sungho.board.dto.board.BoardSaveDto;
+import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@ReadingConverter
 @Service
 public class BoardService {
 
@@ -26,14 +29,14 @@ public class BoardService {
     }
 
     @Transactional //트랜잭션 처리 어노테이션
-    public void savePost(BoardDto boardDto){
-      boardRepository.save(boardDto.toEntity()).getId();
+    public Long save(BoardSaveDto boardSaveDto){
+        return boardRepository.save(boardSaveDto.toEntity()).getId();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<BoardDto> getBoardlist(Integer pageNum){
 
-        Page<Board> page = boardRepository.findAll(PageRequest.of(pageNum-1,PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC,"createdDate")));
+        Page<Board> page = boardRepository.findAll(PageRequest.of(pageNum-1,PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC,"id")));
 
         //List<Board> boards = boardRepository.findAll();
         List<Board> boards = page.getContent();

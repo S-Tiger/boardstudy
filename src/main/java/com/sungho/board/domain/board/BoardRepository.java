@@ -8,5 +8,5 @@ public interface BoardRepository extends JpaRepository<Board,Long> {
 
     List<Board> findByTitleContaining(String keyword);
 
-
+    List<Board> findAllByOrderByIdDesc();
 }

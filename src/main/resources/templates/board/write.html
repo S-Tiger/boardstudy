@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 </head>
 <body>
-<form action="/post" method="post">
-    제목 : <input type="text" name="title"> <br>
-    작성자 : <input type="text" name="writer"> <br>
-    <textarea name="content"></textarea><br>
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form -group">
+                제목 : <input class="form-control" id="title" type="text" name="title"> <br>
+                작성자 : <input class="form-control" id="writer" type="text" name="writer"> <br>
+                내용 : <textarea class="form-control" id="content" name="content"></textarea><br>
 
-    <input type="submit" value="등록">
-</form>
+                <a href="/" role="button" class="btn btn-secondary">취 소</a>
+                <button type="button" class="btn btn-primary" id="btn-save">등 록</button>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
+
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/board.js"></script>
+</footer>
 </html>
